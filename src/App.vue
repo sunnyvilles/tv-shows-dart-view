@@ -1,10 +1,23 @@
 <template>
-  <div id="nav">
-    <router-link to="/">Home</router-link> |
-    <router-link to="/about">About</router-link>
+  <div class="container">
+    <Header />
+    <article class="main">
+      <router-view />
+    </article>
+    <footer><h3>@tv-shows</h3></footer>
   </div>
-  <router-view />
 </template>
+
+<script>
+// @ is an alias to /src
+import Header from "@/layout/Header.vue";
+
+export default {
+  components: {
+    Header,
+  },
+};
+</script>
 
 <style lang="scss">
 #app {
@@ -14,17 +27,21 @@
   text-align: center;
   color: #2c3e50;
 }
-
-#nav {
-  padding: 30px;
-
-  a {
-    font-weight: bold;
-    color: #2c3e50;
-
-    &.router-link-exact-active {
-      color: #42b983;
-    }
+.container {
+  text-align: center;
+  background-color: $color;
+}
+.container > * {
+  padding: $outerSpacing;
+  margin: $outerSpacing;
+  flex: 1 100%;
+}
+.container {
+  footer {
+    height: $barHeight;
+  }
+  .main {
+    text-align: left;
   }
 }
 </style>

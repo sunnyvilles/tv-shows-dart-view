@@ -1,18 +1,30 @@
 <template>
-  <div class="home">
-    <img alt="Vue logo" src="../assets/logo.png" />
-    <HelloWorld msg="Welcome to Your Vue.js App" />
-  </div>
+  <ShowsSearch :onSearch="onSearch" v-model="searchTerm" />
+  <ShowsList />
 </template>
 
 <script>
 // @ is an alias to /src
-import HelloWorld from "@/components/HelloWorld.vue";
+import ShowsSearch from "@/components/Shows/ShowsSearch.vue";
+import ShowsList from "@/components/Shows/ShowsList.vue";
 
 export default {
   name: "Home",
   components: {
-    HelloWorld,
+    ShowsSearch,
+    ShowsList,
+  },
+  data() {
+    return {
+      searchTerm: "",
+    };
+  },
+  methods: {
+    onSearch() {
+      if (!this.searchTerm) return;
+      //this.$store.dispatch('resetState');
+      this.$store.dispatch("fetchSearchResults", this.searchTerm);
+    },
   },
 };
 </script>
