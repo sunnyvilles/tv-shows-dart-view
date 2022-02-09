@@ -6,7 +6,7 @@ Following env used for development
 
 1. node v14.15.1
 2. npm v8.4.1
-3. Python 3.2
+3. Python 3.9
 4. macos Sierra
 
 ## Project setup
